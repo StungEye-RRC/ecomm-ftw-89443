@@ -1,7 +1,11 @@
 EcommFtw::Application.routes.draw do
-  get "store/index"
-
-  resources :products
+ 
+  root :to => "store#index", :via => :get
+  
+  match 'products/:id' => 'store#show', :as => 'product'
+  
+  
+  resources :products, :except => :show
 
 
   # The priority is based upon order of creation:
